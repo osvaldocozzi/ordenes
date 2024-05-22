@@ -1,27 +1,19 @@
 package com.example.ordenes.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "producto")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name ="id_producto")
     private long id_producto;
 
@@ -39,8 +31,7 @@ public class Producto {
 
     @Column(name ="disponibilidad")
     private String disponibilidad;
-    
-    // Relación con Usuario
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     private Usuario id_usuario;

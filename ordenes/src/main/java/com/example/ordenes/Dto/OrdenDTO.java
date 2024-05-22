@@ -1,13 +1,22 @@
 package com.example.ordenes.Dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class OrdenDTO {
-        private long id;
+import com.example.ordenes.Model.Producto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class OrdenDTO {
+        private long id_orden;
+        private long id_usuario;
+        private List<Producto> productos;
 
     @NotNull(message = "ingrese un numero")
     @Size(min = 1)
@@ -33,55 +42,23 @@ public class OrdenDTO {
 
     
     public OrdenDTO(
-    long id,
+    long id_orden,
+    long id_usuario,
+    List<Producto>productos,
     @NotNull(message = "ingrese un numero")@Size(min = 1)int numero,
     @NotNull(message = "ingrese estado de orden")@Size(min = 1)String estado_orden,
     @NotNull(message = "ingrese fecha_hora")@Size(min = 1)Date fecha_hora,
     String comentario,
     @NotNull(message = "ingrese metodo_pago")@Size(min = 1)String metodo_pago
     ){
-        this.id=id;
+        this.id_orden=id_orden;
         this.numero=numero;
         this.estado_orden=estado_orden;
         this.fecha_hora=fecha_hora;
         this.comentario=comentario;
         this.metodo_pago=metodo_pago;
-        
-    }
-    public void setNumero(int numero){
-        this.numero=numero;
-    }
-    public void setEstadoOrden(String estado_orden){
-        this.estado_orden=estado_orden;
-    }
-    public void setFechaHora(Date fecha_hora){
-        this.fecha_hora=fecha_hora;
-    }
-    public void setComentario(String comentario){
-        this.comentario=comentario;
-    }
-    public void setMetodoPago(String metodo_pago){
-        this.metodo_pago=metodo_pago;
-    }
-
-    public int getNumero(){
-        return this.numero;
-    }
-    public String getEstadoOrden(){
-        return this.estado_orden;
-    }
-    public Date getFechaHora(){
-        return this.fecha_hora;
-    }
-    public String getComentario(){
-        return this.comentario;
-    }
-    public String getMetodoPago(){
-        return this.metodo_pago;
-    }
-
-    public long getId(){
-        return this.id;
+        this.id_usuario=id_usuario;
+        this.productos=productos;
     }
 }
 

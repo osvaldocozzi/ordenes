@@ -3,10 +3,14 @@ package com.example.ordenes.Dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class ProductoDTO {
-    
-    private long id;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+public class ProductoDTO {
+    private long id_producto;
+    private long id_usuario;
 
     @NotNull(message = "ingrese un nombre")
     @Size(min = 1)
@@ -28,60 +32,17 @@ public class ProductoDTO {
     @Size(min = 1)
     private String disponibilidad;
 
-    public ProductoDTO(){
+    public ProductoDTO() {}
 
-    }
-
-    
-    public ProductoDTO(
-    long id,
-    @NotNull(message = "ingrese un nombre") @Size(min = 1)String nombre,
-    @NotNull(message = "ingrese un precio")@Size(min = 1) int precio,
-    @NotNull(message = "ingrese una cantidad")@Size(min = 1)int cantidad,
-    @NotNull(message = "ingrese una categoria")@Size(min = 1) String categoria,
-    @NotNull(message = "ingrese la disponibilidad")@Size(min = 1)String disponibilidad
-    ){
-        this.id=id;
-        this.nombre=nombre;
-        this.precio=precio;
-        this.cantidad=cantidad;
-        this.categoria=categoria;
-        this.disponibilidad=disponibilidad;
-        
-    }
-    public void setNombre(String nombre){
-        this.nombre=nombre;
-    }
-    public void setPrecio(int precio){
-        this.precio=precio;
-    }
-    public void setCantidad(int cantidad){
-        this.cantidad=cantidad;
-    }
-    public void setCategoria(String categoria){
-        this.categoria=categoria;
-    }
-    public void setDisponibilidad(String disponibilidad){
-        this.disponibilidad=disponibilidad;
-    }
-
-    public String getNombre(){
-        return this.nombre;
-    }
-    public int getPrecio(){
-        return this.precio;
-    }
-    public int getCantidad(){
-        return this.cantidad;
-    }
-    public String getCategoria(){
-        return this.categoria;
-    }
-    public String getDisponibilidad(){
-        return this.disponibilidad;
-    }
-
-    public long getId(){
-        return this.id;
+    public ProductoDTO(long id_producto, long id_usuario, @NotNull @Size(min = 1) String nombre,
+                       @NotNull @Size(min = 1) int precio, @NotNull @Size(min = 1) int cantidad,
+                       @NotNull @Size(min = 1) String categoria, @NotNull @Size(min = 1) String disponibilidad) {
+        this.id_producto = id_producto;
+        this.id_usuario = id_usuario;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.categoria = categoria;
+        this.disponibilidad = disponibilidad;
     }
 }

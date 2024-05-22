@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UsuarioDTO {
-        private long id;
+        private long id_usuario;
 
 
     @NotNull(message = "ingrese un nombre")
@@ -41,7 +41,7 @@ public class UsuarioDTO {
 
     
     public UsuarioDTO(
-    long id,
+    long id_usuario,
     @NotNull(message = "ingrese un nombre") @Size(min = 1)String nombre,
     @NotNull(message = "ingrese un apellido") @Size(min = 1)String apellido,
     @NotNull(message = "ingrese un correo") @Size(min = 1)String correo,
@@ -50,7 +50,7 @@ public class UsuarioDTO {
     @NotNull(message = "ingrese la telefono")@Size(min = 1)int telefono,
     @NotNull(message = "ingrese la rol")@Size(min = 1)String rol
     ){
-        this.id=id;
+        this.id_usuario=id_usuario;
         this.nombre=nombre;
         this.apellido=apellido;
         this.correo=correo;
@@ -105,6 +105,6 @@ public class UsuarioDTO {
         return this.rol;
     }
     public long getId(){
-        return this.id;
+        return this.id_usuario;
     }
 }
