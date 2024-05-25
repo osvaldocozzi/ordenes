@@ -3,12 +3,14 @@ package com.example.ordenes.Mappers;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 import com.example.ordenes.Dto.ProductoDTO;
 import com.example.ordenes.Model.Producto;
 import com.example.ordenes.Model.Usuario;
 
 @Mapper
+@Component
 public interface ProductoMapper {
     ProductoMapper INSTANCE = Mappers.getMapper(ProductoMapper.class);
 

@@ -1,12 +1,18 @@
 package com.example.ordenes.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.ordenes.Dto.UsuarioDTO;
+import com.example.ordenes.Exception.ResourceNotFoundException;
 import com.example.ordenes.Mappers.UsuarioMapper;
 import com.example.ordenes.Model.Usuario;
 import com.example.ordenes.Repository.IUsuarioRepository;
 
+@Service
 public class UsuarioService implements IUsuarioService{
 
     @Autowired
@@ -25,7 +31,7 @@ public class UsuarioService implements IUsuarioService{
     @Override
     public UsuarioDTO getUsuarioById(Long id_usuario) {
         Usuario usuario = usuarioRepository.findById(id_usuario)
-            .orElseThrow(()-> new RuntimeException("Usuario no encontrada"));
+            .orElseThrow(()-> new ResourceNotFoundException("Usuario no encontrada con id"+id_usuario));
         return usuarioMapper.toDto(usuario);
     }
 
@@ -33,7 +39,7 @@ public class UsuarioService implements IUsuarioService{
     public UsuarioDTO updateUsuario(Long id_usuario, UsuarioDTO usuarioDTO) {
         
         Usuario usuario= usuarioRepository.findById(id_usuario)
-            .orElseThrow(()-> new RuntimeException("Usuario no encontrada"));
+            .orElseThrow(()-> new ResourceNotFoundException("Usuario no encontrada con id"+id_usuario));
         usuario.setApellido(usuarioDTO.getApellido());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setDomicilio(usuarioDTO.getDomicilio());
@@ -47,10 +53,18 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public void deleteProducto(Long id_usuario) {
+    public void deleteUsuario(Long id_usuario) {
         Usuario usuario = usuarioRepository.findById(id_usuario)
-            .orElseThrow(()-> new RuntimeException("Usuario no encontrada"));
+            .orElseThrow(()-> new RuntimeException("Usuario no encontrada con id"+id_usuario));
         usuarioRepository.delete(usuario);
+    }
+
+    @Override
+    public List<UsuarioDTO> getAllUsuarios() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        return usuarios.stream()
+                .map(usuarioMapper::toDto)
+                .collect(Collectors.toList());
     }
     
 }

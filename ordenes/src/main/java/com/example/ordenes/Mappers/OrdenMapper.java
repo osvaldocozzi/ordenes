@@ -4,12 +4,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
 import com.example.ordenes.Dto.OrdenDTO;
 import com.example.ordenes.Model.Orden;
 import com.example.ordenes.Model.Usuario;
 
 @Mapper(uses = {UsuarioMapper.class, ProductoMapper.class})
+@Component
 public interface OrdenMapper {
     OrdenMapper INSTANCE = Mappers.getMapper(OrdenMapper.class);
 
