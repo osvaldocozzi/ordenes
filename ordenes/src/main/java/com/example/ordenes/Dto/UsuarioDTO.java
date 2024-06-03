@@ -69,6 +69,8 @@ public class UsuarioDTO {
         this.nombre=nombre;
         this.apellido=apellido;
         this.correo=correo;
+        this.username=username;
+        this.password=password;
         this.domicilio=domicilio;
         this.horario=horario;
         this.telefono=telefono;
@@ -84,10 +86,10 @@ public class UsuarioDTO {
     public void setCorreo(String correo){
         this.correo=correo;
     }
-    public void setUsername(){
+    public void setUsername(String username){
         this.username=username;
     }
-    public void setPassword(){
+    public void setPassword(String password){
         this.password=password;
     }
     public void setDomicilio(String domicilio){
@@ -101,6 +103,9 @@ public class UsuarioDTO {
     }
     public void setRol(Rol rol){
         this.rol=rol;
+    }
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getNombre(){
@@ -131,7 +136,7 @@ public class UsuarioDTO {
     public Rol getRol(){
         return this.rol;
     }
-    public long getId(){
+    public long getId_usuario(){
         return this.id_usuario;
     }
 

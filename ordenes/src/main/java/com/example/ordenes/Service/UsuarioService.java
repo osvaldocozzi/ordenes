@@ -49,7 +49,7 @@ public class UsuarioService implements IUsuarioService{
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setRol(usuarioDTO.getRol());
         usuario.setTelefono(usuarioDTO.getTelefono());
-        usuario.setId_usuario(usuarioDTO.getId());
+        usuario.setId_usuario(usuarioDTO.getId_usuario());
         Usuario updateUsuario = usuarioMapper.toEntity(usuarioDTO);
         return usuarioMapper.toDto(updateUsuario);
     }
