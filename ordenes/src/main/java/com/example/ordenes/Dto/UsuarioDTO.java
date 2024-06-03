@@ -1,7 +1,11 @@
 package com.example.ordenes.Dto;
 
+
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.example.ordenes.Model.Rol;
 
 public class UsuarioDTO {
         private long id_usuario;
@@ -19,6 +23,15 @@ public class UsuarioDTO {
     @Size(min = 1)
     private String correo;
 
+
+    @NotNull(message = "ingrese un nombre de usuario")
+    @Size(min = 1)
+    private String username;
+
+    @NotNull(message = "ingrese un a contrasenia")
+    @Size(min = 1)
+    private String password;
+
     @NotNull(message = "ingrese un domicilio")
     @Size(min = 1)
     private String domicilio;
@@ -33,7 +46,7 @@ public class UsuarioDTO {
    
     @NotNull(message = "ingrese el rol")
     @Size(min = 1)
-    private String rol;
+    private Rol rol;
 
     public UsuarioDTO(){
 
@@ -45,10 +58,12 @@ public class UsuarioDTO {
     @NotNull(message = "ingrese un nombre") @Size(min = 1)String nombre,
     @NotNull(message = "ingrese un apellido") @Size(min = 1)String apellido,
     @NotNull(message = "ingrese un correo") @Size(min = 1)String correo,
+    @NotNull(message = "ingrese un username") @Size(min = 1)String username,
+    @NotNull(message = "ingrese un password") @Size(min = 1)String password,
     @NotNull(message = "ingrese una domicilio")@Size(min = 1) String domicilio,
     @NotNull(message = "ingrese la horario")@Size(min = 1)String horario,
     @NotNull(message = "ingrese la telefono")@Size(min = 1)int telefono,
-    @NotNull(message = "ingrese la rol")@Size(min = 1)String rol
+    @NotNull(message = "ingrese la rol")@Size(min = 1)Rol rol
     ){
         this.id_usuario=id_usuario;
         this.nombre=nombre;
@@ -69,6 +84,12 @@ public class UsuarioDTO {
     public void setCorreo(String correo){
         this.correo=correo;
     }
+    public void setUsername(){
+        this.username=username;
+    }
+    public void setPassword(){
+        this.password=password;
+    }
     public void setDomicilio(String domicilio){
         this.domicilio=domicilio;
     }
@@ -78,7 +99,7 @@ public class UsuarioDTO {
     public void setTelefono(int telefono){
         this.telefono=telefono;
     }
-    public void setRol(String rol){
+    public void setRol(Rol rol){
         this.rol=rol;
     }
 
@@ -91,6 +112,12 @@ public class UsuarioDTO {
     public String getCorreo(){
         return this.correo;
     }
+    public String getUsername(){
+        return this.username;
+    }
+    public String getPassword(){
+        return this.password;
+    }
     public String getDomicilio(){
         return this.domicilio;
     }
@@ -101,10 +128,11 @@ public class UsuarioDTO {
         return this.telefono;
     }
     
-    public String getRol(){
+    public Rol getRol(){
         return this.rol;
     }
     public long getId(){
         return this.id_usuario;
     }
+
 }

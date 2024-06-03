@@ -42,6 +42,8 @@ public class UsuarioService implements IUsuarioService{
             .orElseThrow(()-> new ResourceNotFoundException("Usuario no encontrada con id"+id_usuario));
         usuario.setApellido(usuarioDTO.getApellido());
         usuario.setCorreo(usuarioDTO.getCorreo());
+        usuario.setUsername(usuarioDTO.getUsername());
+        usuario.setPassword(usuarioDTO.getPassword());
         usuario.setDomicilio(usuarioDTO.getDomicilio());
         usuario.setHorario(usuarioDTO.getHorario());
         usuario.setNombre(usuarioDTO.getNombre());
