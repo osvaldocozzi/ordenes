@@ -15,10 +15,10 @@ import com.example.ordenes.Repository.IProductoRepository;
 public class ProductoService implements IProductoService{
     
     @Autowired
-    private IProductoRepository productoRepository;
+    IProductoRepository productoRepository;
     
     @Autowired
-    private ProductoMapper productoMapper;
+    ProductoMapper productoMapper;
 
     @Override
     public ProductoDTO createProducto(ProductoDTO productoDTO) {
@@ -26,7 +26,6 @@ public class ProductoService implements IProductoService{
         Producto savedProducto = productoRepository.save(producto);
         return productoMapper.toDto(savedProducto);
     }
-
     @Override
     public ProductoDTO getProductoById(Long id_producto) {
         Producto producto = productoRepository.findById(id_producto)

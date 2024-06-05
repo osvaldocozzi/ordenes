@@ -1,5 +1,7 @@
 package com.example.ordenes.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class OrdenService implements IOrdenService{
     }
 
     @Override
-    public OrdenDTO updateProducto(Long id_orden, OrdenDTO ordenDTO) {
+    public OrdenDTO updateOrden(Long id_orden, OrdenDTO ordenDTO) {
         Orden orden = ordenRepository.findById(id_orden)
             .orElseThrow(()-> new RuntimeException("Orden no encontrada"));
         orden.setComentario(ordenDTO.getComentario());
@@ -67,6 +69,12 @@ public class OrdenService implements IOrdenService{
         ordenRepository.delete(orden);
     }
 
-
+    @Override
+    public List<OrdenDTO> findByFechaOrden(Date fecha_orden) {
+        List<Orden> ordenes = ordenRepository.findByFechaOrden(fecha_orden);
+        return ordenes.stream()
+                .map(ordenMapper::toDto)
+                .collect(Collectors.toList());
+    }
     
 }
